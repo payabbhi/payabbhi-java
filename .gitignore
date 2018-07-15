@@ -1,0 +1,21 @@
+*.swp
+.classpath
+.project
+.settings
+tags
+target
+.idea
+*.iml
+.DS_Store
+.metadata/
+.vscode/
+
+# Gradle files
+.gradle/*
+build/*
+out/*
+
+# compiler output
+bin/
+/.gradle/
+/build/

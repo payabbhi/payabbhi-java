@@ -1,0 +1,54 @@
+{
+    "id": "pay_aIrgi1wnYjT82422",
+    "object": "payment",
+    "amount": 300,
+    "currency": "INR",
+    "status": "captured",
+    "order_id": "order_dkKfFNBczPHXuagG",
+    "international": false,
+    "method": "card",
+    "description": "Flower Shop",
+    "card": "visa-credit",
+    "bank": "",
+    "wallet": "",
+    "vpa": "",
+    "emi": null,
+    "email": "madhumita.ganguly@payabbhi.com",
+    "contact": "9874785847",
+    "notes": {
+        "Name": "Madhumita"
+    },
+    "fee": 6,
+    "service_tax": 0,
+    "payout_amount": 0,
+    "payout_type": "",
+    "refunded_amount": 200,
+    "refund_status": "partial",
+    "refunds": {
+        "total_count": 2,
+        "object": "list",
+        "data": [
+            {
+                "id": "rfnd_IQr0lrApM9S0QaKQ",
+                "object": "refund",
+                "amount": 100,
+                "currency": "INR",
+                "payment_id": "pay_aIrgi1wnYjT82422",
+                "notes": null,
+                "created_at": 1531396291
+            },
+            {
+                "id": "rfnd_1IfR1R9Q9exB6zgP",
+                "object": "refund",
+                "amount": 100,
+                "currency": "INR",
+                "payment_id": "pay_aIrgi1wnYjT82422",
+                "notes": null,
+                "created_at": 1531396278
+            }
+        ]
+    },
+    "error_code": "",
+    "error_description": "",
+    "created_at": 1531299143
+}

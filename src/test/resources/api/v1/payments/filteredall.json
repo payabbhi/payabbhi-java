@@ -1,0 +1,41 @@
+{
+    "total_count": 1,
+    "object": "list",
+    "data": [
+        {
+            "id": "pay_C5OcIOxiCrZXAcHG",
+            "object": "payment",
+            "amount": 100,
+            "currency": "INR",
+            "status": "captured",
+            "order_id": "order_8j3N11lCbJ2NtzOd",
+            "international": false,
+            "method": "card",
+            "description": "Order # JAVASDK-Custom-Step4-Order-2202",
+            "card": "visa-credit",
+            "bank": "",
+            "wallet": "",
+            "vpa": "",
+            "emi": null,
+            "email": "bruce@wayneinc.com",
+            "contact": "9999999999",
+            "notes": {
+                "merchant_order_id": "JAVASDK-Custom-Step4-Order-2202"
+            },
+            "fee": 2,
+            "service_tax": 0,
+            "payout_amount": 0,
+            "payout_type": "",
+            "refunded_amount": 0,
+            "refund_status": "",
+            "refunds": {
+                "total_count": 0,
+                "object": "list",
+                "data": []
+            },
+            "error_code": "",
+            "error_description": "",
+            "created_at": 1531209149
+        }
+    ]
+}

@@ -1,0 +1,152 @@
+
+plugins {
+    id 'java-library'
+    id 'maven'
+    id 'signing'
+    // id 'checkstyle'
+    // id "com.diffplug.gradle.spotless" version "3.13.0"
+    id 'de.fuerstenau.buildconfig' version '1.1.8'
+}
+
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'org.json:json:20180130'
+    implementation 'commons-codec:commons-codec:1.11'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:[2.0,)'
+}
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+// checkstyle {
+//    toolVersion = '8.8'
+//}
+
+def getGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title':   project.name,
+                   'Implementation-Version': project.version,
+                   'Build-Hash':    "${getGitHash()}")
+    }
+}
+
+/*
+spotless {
+  java {
+    googleJavaFormat()
+  }
+}
+*/
+task dist(type: Tar, dependsOn: build) {
+	archiveName = "payabbhi-java-${project.version}.tar.gz"
+	classifier = new Date().getTime()
+
+	into ('/'){
+	   from 'build/libs'
+	   include '*.jar'
+	}
+
+	into ('/'){
+	   from '.'
+	   include 'README.md', 'LICENSE'
+	}
+
+	destinationDir  file('build/tar')
+	extension 'tar.gz'
+	compression = Compression.GZIP
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives jar, javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+group = "com.payabbhi"
+archivesBaseName = "payabbhi-java"
+version = "1.0.0"
+
+buildConfig {
+    appName = project.name
+    version = project.version
+    clsName = 'BuildInfo'
+    packageName = project.group
+    charset = 'UTF-8'
+    buildConfigField 'String', 'BUILD_HASH', "${getGitHash()}"
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      pom.project {
+        name 'payabbhi-java'
+        packaging 'jar'
+        description 'Payabbhi Java Library.'
+        url 'https://github.com/payabbhi/payabbhi-java'
+
+        scm {
+          connection 'scm:git:https://github.com/payabbhi/payabbhi-java.git'
+          developerConnection 'scm:git:https://github.com/payabbhi/payabbhi-java.git'
+          url 'https://github.com/payabbhi/payabbhi-java.git'
+        }
+
+        licenses {
+          license {
+            name 'The MIT License'
+            url 'https://opensource.org/licenses/MIT'
+          }
+        }
+
+        developers {
+          developer {
+            id 'ppm-admin'
+            name 'Payabbhi'
+            email 'support@payabbhi.com'
+          }
+        }
+
+        organization {
+          name 'Payabbhi'
+          url 'https://payabbhi.com'
+        }
+      }
+    }
+  }
+}
