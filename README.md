@@ -26,6 +26,17 @@ Include this dependency in your Gradle build file `build.gradle`:
 compile "com.payabbhi:payabbhi-java:1.0.0"
 ```
 
+### Manual Download
+
+An alternative is to manually download the JAR for [Payabbhi Java Library from Maven repository](http://central.maven.org/maven2/com/payabbhi/payabbhi-java/1.0.0/payabbhi-java-1.0.0.jar)
+
+Payabbhi Java library has the following dependencies which should be included separately:
+* [commons-codec](http://central.maven.org/maven2/commons-codec/commons-codec/1.11/commons-codec-1.11.jar)
+* [json](http://central.maven.org/maven2/org/json/json/20180130/json-20180130.jar)
+* [okHttp](http://central.maven.org/maven2/com/squareup/okhttp3/okhttp/3.10.0/okhttp-3.10.0.jar)
+* [okio](http://central.maven.org/maven2/com/squareup/okio/okio/1.14.0/okio-1.14.0.jar)
+
+
 
 ## Documentation
 
