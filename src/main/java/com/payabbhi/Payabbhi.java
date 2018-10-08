@@ -22,7 +22,7 @@ public class Payabbhi {
   private static volatile int writeTimeout = 10;
 
   /**
-   * Sets additional information about your app.
+   * Verifies payment signature
    *
    * @param attributes a map of the following attributes and their values [order_id, payment_id,
    *     payment_signature]
@@ -31,8 +31,40 @@ public class Payabbhi {
    */
   public static boolean verifyPaymentSignature(Map<String, String> attributes)
       throws PayabbhiException {
-    return Signature.verify(attributes, secretKey);
+    return Signature.verifyPaymentSignature(attributes, secretKey);
   }
+
+
+  /**
+   * Verifies webhook signature
+   *
+   * @param data containing payload data
+   * @param signature containing the actual signature
+   * @param secret containing the secret
+   * @return true if the webhook signature is verified successfully
+   * @throws PayabbhiException in case of any problem while recomputing the signature
+   */
+  public static boolean verifyWebhookSignature(String data, String signature, String secret)
+      throws PayabbhiException {
+    return Payabbhi.verifyWebhookSignature(data, signature, secret, 300);
+  }
+
+  /**
+   * Verifies webhook signature
+   *
+   * @param data containing payload data
+   * @param signature containing the actual signature
+   * @param secret containing the secret
+   * @param replayInterval containing the replay interval in seconds
+   * @return true if the webhook signature is verified successfully
+   * @throws PayabbhiException in case of any problem while recomputing the signature
+   */
+  public static boolean verifyWebhookSignature(String data, String signature, String secret, int replayInterval)
+      throws PayabbhiException {
+    return Signature.verifyWebhookSignature(data, signature, secret, replayInterval);
+  }
+
+
 
   public static String apiBase() {
     return apiBase;

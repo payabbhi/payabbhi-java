@@ -14,7 +14,7 @@ Include this dependency in your Maven `pom.xml`:
 <dependency>
   <groupId>com.payabbhi</groupId>
   <artifactId>payabbhi-java</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
@@ -23,12 +23,12 @@ Include this dependency in your Maven `pom.xml`:
 Include this dependency in your Gradle build file `build.gradle`:
 
 ```
-compile "com.payabbhi:payabbhi-java:1.0.0"
+compile "com.payabbhi:payabbhi-java:1.0.1"
 ```
 
 ### Manual Download
 
-An alternative is to manually download the JAR for [Payabbhi Java Library from Maven repository](http://central.maven.org/maven2/com/payabbhi/payabbhi-java/1.0.0/payabbhi-java-1.0.0.jar)
+An alternative is to manually download the JAR for [Payabbhi Java Library from Maven repository](http://central.maven.org/maven2/com/payabbhi/payabbhi-java/1.0.1/payabbhi-java-1.0.1.jar)
 
 Payabbhi Java library has the following dependencies which should be included separately:
 * [commons-codec](http://central.maven.org/maven2/commons-codec/commons-codec/1.11/commons-codec-1.11.jar)
@@ -65,7 +65,7 @@ public class Example {
 
 		Payabbhi.accessId  = "<your-access-id>";
 		Payabbhi.secretKey = "<your-secret-key>";
-		
+
 		try {
 			Map<String, Object> params = new HashMap<>();
 			params.put("merchant_order_id", "0211");
@@ -73,14 +73,14 @@ public class Example {
 			params.put("currency", "INR");
 
 			Order order = Order.create(params);
-			
+
 			System.out.println(order);
-			
+
 		} catch (PayabbhiException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
 ```
 
@@ -96,4 +96,3 @@ params.put("payment_id", "<payment-id>");
 params.put("payment_signature", "<payment-signature>");
 Payabbhi.verifyPaymentSignature(params)
 ```
-
