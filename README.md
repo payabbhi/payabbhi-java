@@ -28,7 +28,7 @@ compile "com.payabbhi:payabbhi-java:1.0.0"
 
 ### Manual Download
 
-An alternative is to manually download the JAR for [Payabbhi Java Library from Maven repository](http://central.maven.org/maven2/com/payabbhi/payabbhi-java/1.0.0/payabbhi-java-1.0.0.jar)
+An alternative is to manually download the JAR for [Payabbhi Java Library from Maven repository](https://mvnrepository.com/artifact/com.payabbhi/payabbhi-java)
 
 Payabbhi Java library has the following dependencies which should be included separately:
 * [commons-codec](http://central.maven.org/maven2/commons-codec/commons-codec/1.11/commons-codec-1.11.jar)
