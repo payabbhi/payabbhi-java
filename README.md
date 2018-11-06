@@ -96,3 +96,14 @@ params.put("payment_id", "<payment-id>");
 params.put("payment_signature", "<payment-signature>");
 Payabbhi.verifyPaymentSignature(params)
 ```
+
+### Webhook Signature Verification
+Payabbhi Java library provides utility functions for verifying the webhook signature received. The snippet below demonstrates a typical usage:
+
+```java
+import com.payabbhi.Payabbhi;
+
+Payabbhi.verifyWebhookSignature("<data>", "<signature>", "<secret>");
+Payabbhi.verifyWebhookSignature("<data>", "<signature>", "<secret>", <replayInterval>);
+```
+
