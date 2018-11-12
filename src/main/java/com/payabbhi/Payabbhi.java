@@ -38,30 +38,30 @@ public class Payabbhi {
   /**
    * Verifies webhook signature
    *
-   * @param data containing payload data
+   * @param payload containing payload data
    * @param signature containing the actual signature
    * @param secret containing the secret
    * @return true if the webhook signature is verified successfully
    * @throws PayabbhiException in case of any problem while recomputing the signature
    */
-  public static boolean verifyWebhookSignature(String data, String signature, String secret)
+  public static boolean verifyWebhookSignature(String payload, String signature, String secret)
       throws PayabbhiException {
-    return Payabbhi.verifyWebhookSignature(data, signature, secret, 300);
+    return Payabbhi.verifyWebhookSignature(payload, signature, secret, 300);
   }
 
   /**
    * Verifies webhook signature
    *
-   * @param data containing payload data
+   * @param payload containing payload data
    * @param signature containing the actual signature
    * @param secret containing the secret
    * @param replayInterval containing the replay interval in seconds
    * @return true if the webhook signature is verified successfully
    * @throws PayabbhiException in case of any problem while recomputing the signature
    */
-  public static boolean verifyWebhookSignature(String data, String signature, String secret, int replayInterval)
+  public static boolean verifyWebhookSignature(String payload, String signature, String secret, int replayInterval)
       throws PayabbhiException {
-    return Signature.verifyWebhookSignature(data, signature, secret, replayInterval);
+    return Signature.verifyWebhookSignature(payload, signature, secret, replayInterval);
   }
 
 

@@ -103,7 +103,8 @@ Payabbhi Java library provides utility functions for verifying the webhook signa
 ```java
 import com.payabbhi.Payabbhi;
 
-Payabbhi.verifyWebhookSignature("<data>", "<signature>", "<secret>");
-Payabbhi.verifyWebhookSignature("<data>", "<signature>", "<secret>", <replayInterval>);
-```
+// In this call default value of replayInterval is 300 seconds
+Payabbhi.verifyWebhookSignature("<payload>", "<signature>", "<secret>");
 
+Payabbhi.verifyWebhookSignature("<payload>", "<signature>", "<secret>", <replayInterval>);
+```
