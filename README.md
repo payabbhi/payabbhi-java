@@ -14,7 +14,7 @@ Include this dependency in your Maven `pom.xml`:
 <dependency>
   <groupId>com.payabbhi</groupId>
   <artifactId>payabbhi-java</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
@@ -23,7 +23,7 @@ Include this dependency in your Maven `pom.xml`:
 Include this dependency in your Gradle build file `build.gradle`:
 
 ```
-compile "com.payabbhi:payabbhi-java:1.0.0"
+compile "com.payabbhi:payabbhi-java:1.0.1"
 ```
 
 ### Manual Download
@@ -65,7 +65,7 @@ public class Example {
 
 		Payabbhi.accessId  = "<your-access-id>";
 		Payabbhi.secretKey = "<your-secret-key>";
-		
+
 		try {
 			Map<String, Object> params = new HashMap<>();
 			params.put("merchant_order_id", "0211");
@@ -73,21 +73,21 @@ public class Example {
 			params.put("currency", "INR");
 
 			Order order = Order.create(params);
-			
+
 			System.out.println(order);
-			
+
 		} catch (PayabbhiException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
 ```
 
 For more examples see the [Java API documentation](https://payabbhi.com/docs/api/?java)
 
-### Signature Verification
-Payabbhi Java library provides utility functions for verifying the payment signature received in the payment callback. The snippet below demonstrates a typical usage:
+### Payment Signature Verification
+Payabbhi Java library provides utility function for verifying the payment signature received in the payment callback. 
 
 ```java
 Map<String, String> params = new HashMap()
@@ -97,3 +97,14 @@ params.put("payment_signature", "<payment-signature>");
 Payabbhi.verifyPaymentSignature(params)
 ```
 
+### Webhook Signature Verification
+Payabbhi Java library provides utility function for webhook signature verification. 
+
+```java
+import com.payabbhi.Payabbhi;
+
+// In this call default value of replayInterval is 300 seconds
+Payabbhi.verifyWebhookSignature("<payload>", "<signature>", "<secret>");
+
+Payabbhi.verifyWebhookSignature("<payload>", "<signature>", "<secret>", <replayInterval>);
+```
