@@ -12,6 +12,7 @@ public class APIErrorResponse {
   private static final String AUTHENTICATION_ERROR = "authentication_error";
   private static final String INVALID_REQUEST_ERROR = "invalid_request_error";
 
+  /** Return the API error response constructed from status,field,message and type. */
   public APIErrorResponse(int status, String field, String message, String type) {
     super();
     this.status = status;
@@ -49,6 +50,7 @@ public class APIErrorResponse {
   private String message;
   private String type;
 
+  /** Return the Exception corresponding to API error message. */
   public PayabbhiException toException() {
     switch (this.type) {
       case INVALID_REQUEST_ERROR:

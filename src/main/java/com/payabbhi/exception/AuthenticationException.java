@@ -26,7 +26,7 @@ public class AuthenticationException extends PayabbhiException {
   private String field;
 
   /**
-   * Constructs a AuthenticationException
+   * Constructs a AuthenticationException.
    *
    * @param status HTTP status code
    * @param message description of the exception

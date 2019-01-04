@@ -1,7 +1,7 @@
 package com.payabbhi.exception;
 
 /**
- * An exception raised due to invalid API request for omitted required field or invalid field value
+ * An exception raised due to invalid API request for omitted required field or invalid field value.
  * etc
  */
 public class InvalidRequestException extends PayabbhiException {
@@ -26,7 +26,7 @@ public class InvalidRequestException extends PayabbhiException {
   private String field;
 
   /**
-   * Constructs a InvalidRequestException
+   * Constructs a InvalidRequestException.
    *
    * @param status HTTP status code
    * @param message description of the exception

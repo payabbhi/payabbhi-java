@@ -14,6 +14,7 @@ public class PayabbhiCollectionTest extends BaseTest {
   private JSONObject ordersJSONObject;
   private JSONObject orderJSONObject;
 
+  /** It setups the payabbhi object with accessID and secretKey. */
   @Before
   public void setUp() throws JSONException, IOException {
     ordersJSONObject = new JSONObject(getResourceAsString("/collections/orders.json"));

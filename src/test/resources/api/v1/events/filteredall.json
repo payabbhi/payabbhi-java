@@ -1,0 +1,24 @@
+{
+  "total_count": 1,
+  "object": "list",
+  "data": [
+    {
+      "id": "evt_q4ywIKk4aOmtFVf0",
+      "object": "event",
+      "type": "payment.refunded",
+      "created_at": 1495686582,
+      "environment": "live",
+      "data": {
+        "refund": {
+          "id": "rfnd_DwYB1QfJwyqTjABf",
+          "amount": 1000,
+          "created_at": 1495686582,
+          "currency": "INR",
+          "notes": null,
+          "object": "refund",
+          "payment_id": "pay_mUy6UYsRvIxH9Qi2"
+        }
+      }
+    }
+  ]
+}

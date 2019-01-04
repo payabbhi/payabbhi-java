@@ -11,7 +11,7 @@ public class Refund extends APIResource {
   }
 
   /**
-   * Returns a refund object matching the refund_id
+   * Returns a refund object matching the refund_id.
    *
    * @param id The identifier of the refund to be retrieved
    * @return a refund object
@@ -22,7 +22,7 @@ public class Refund extends APIResource {
   }
 
   /**
-   * Returns a list of refunds created previously
+   * Returns a list of refunds created previously.
    *
    * @return a collection of refund objects
    * @throws PayabbhiException if there is a problem in performing the operation
@@ -32,7 +32,7 @@ public class Refund extends APIResource {
   }
 
   /**
-   * Returns a list of refunds created previously
+   * Returns a list of refunds created previously.
    *
    * @param params a map of optional parameters to refine the search
    * @return a collection of refund objects
@@ -45,7 +45,7 @@ public class Refund extends APIResource {
   }
 
   /**
-   * create a refund for a previously captured payment that is not yet fully refunded
+   * create a refund for a previously captured payment that is not yet fully refunded.
    *
    * @param id The identifier of the payment for which refund is being created
    * @return the refund object if the refund is successful
@@ -56,7 +56,7 @@ public class Refund extends APIResource {
   }
 
   /**
-   * create a refund for a previously captured payment that is not yet fully refunded
+   * create a refund for a previously captured payment that is not yet fully refunded.
    *
    * @param paymentId The identifier of the payment for which refund is being created
    * @param params a map of optional parameters

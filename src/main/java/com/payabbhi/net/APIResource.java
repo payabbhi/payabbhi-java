@@ -48,8 +48,9 @@ public class APIResource extends PayabbhiObject {
   }
 
   protected static String withParams(String url, Map<String, Object> params) {
-    if (params == null) return url;
-
+    if (params == null) {
+      return url;
+    }
     StringBuilder sb = new StringBuilder();
     try {
       for (Map.Entry<?, ?> entry : params.entrySet()) {

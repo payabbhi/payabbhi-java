@@ -1,6 +1,6 @@
 package com.payabbhi.exception;
 
-/** Exception originating from the back-end PSP or Gateway */
+/** Exception originating from the back-end PSP or Gateway. */
 public class GatewayException extends PayabbhiException {
 
   public GatewayException(
@@ -23,7 +23,7 @@ public class GatewayException extends PayabbhiException {
   private String field;
 
   /**
-   * Constructs a GatewayException
+   * Constructs a GatewayException.
    *
    * @param status HTTP status code
    * @param message description of the exception

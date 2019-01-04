@@ -5,7 +5,7 @@ import java.util.List;
 import org.json.JSONObject;
 
 /**
- * A generic collection of objects received from the payabbhi rest api
+ * A generic collection of objects received from the payabbhi rest api.
  *
  * @param <T> type of elements of the collections
  */
@@ -18,6 +18,7 @@ public class PayabbhiCollection<T> extends PayabbhiObject {
     this.data = new ArrayList<T>();
   }
 
+  /** A generic collection of objects received from the payabbhi rest api with object and count. */
   public PayabbhiCollection(JSONObject jsonObject, Integer count) {
     super(jsonObject);
     this.totalCount = count;
@@ -25,7 +26,7 @@ public class PayabbhiCollection<T> extends PayabbhiObject {
   }
 
   /**
-   * Returns a List object corresponding to a JSON list
+   * Returns a List object corresponding to a JSON list.
    *
    * @return a list of elements of the collection
    */
@@ -34,7 +35,7 @@ public class PayabbhiCollection<T> extends PayabbhiObject {
   }
 
   /**
-   * returns the count of objects in the collection
+   * returns the count of objects in the collection.
    *
    * @return number of elements of the collection
    */
@@ -43,7 +44,7 @@ public class PayabbhiCollection<T> extends PayabbhiObject {
   }
 
   /**
-   * Adds an object to the collection
+   * Adds an object to the collection.
    *
    * @param obj the object to be added to the collection
    */

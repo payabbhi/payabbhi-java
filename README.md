@@ -14,7 +14,7 @@ Include this dependency in your Maven `pom.xml`:
 <dependency>
   <groupId>com.payabbhi</groupId>
   <artifactId>payabbhi-java</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
@@ -23,7 +23,7 @@ Include this dependency in your Maven `pom.xml`:
 Include this dependency in your Gradle build file `build.gradle`:
 
 ```
-compile "com.payabbhi:payabbhi-java:1.0.1"
+compile "com.payabbhi:payabbhi-java:1.0.2"
 ```
 
 ### Manual Download
@@ -87,7 +87,7 @@ public class Example {
 For more examples see the [Java API documentation](https://payabbhi.com/docs/api/?java)
 
 ### Payment Signature Verification
-Payabbhi Java library provides utility function for verifying the payment signature received in the payment callback. 
+Payabbhi Java library provides utility function for verifying the payment signature received in the payment callback.
 
 ```java
 Map<String, String> params = new HashMap()
@@ -98,7 +98,7 @@ Payabbhi.verifyPaymentSignature(params)
 ```
 
 ### Webhook Signature Verification
-Payabbhi Java library provides utility function for webhook signature verification. 
+Payabbhi Java library provides utility function for webhook signature verification.
 
 ```java
 import com.payabbhi.Payabbhi;

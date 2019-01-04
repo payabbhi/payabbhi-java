@@ -22,7 +22,7 @@ public class Payabbhi {
   private static volatile int writeTimeout = 10;
 
   /**
-   * Verifies payment signature
+   * Verifies payment signature.
    *
    * @param attributes a map of the following attributes and their values [order_id, payment_id,
    *     payment_signature]
@@ -34,9 +34,8 @@ public class Payabbhi {
     return Signature.verifyPaymentSignature(attributes, secretKey);
   }
 
-
   /**
-   * Verifies webhook signature
+   * Verifies webhook signature.
    *
    * @param payload containing payload data
    * @param signature containing the actual signature
@@ -50,7 +49,7 @@ public class Payabbhi {
   }
 
   /**
-   * Verifies webhook signature
+   * Verifies webhook signature.
    *
    * @param payload containing payload data
    * @param signature containing the actual signature
@@ -59,12 +58,11 @@ public class Payabbhi {
    * @return true if the webhook signature is verified successfully
    * @throws PayabbhiException in case of any problem while recomputing the signature
    */
-  public static boolean verifyWebhookSignature(String payload, String signature, String secret, int replayInterval)
+  public static boolean verifyWebhookSignature(
+      String payload, String signature, String secret, int replayInterval)
       throws PayabbhiException {
     return Signature.verifyWebhookSignature(payload, signature, secret, replayInterval);
   }
-
-
 
   public static String apiBase() {
     return apiBase;
@@ -114,7 +112,7 @@ public class Payabbhi {
   }
 
   /**
-   * Sets the connection timeout for new connections
+   * Sets the connection timeout for new connections.
    *
    * @param connectTimeout timeout value in seconds
    */
@@ -132,7 +130,7 @@ public class Payabbhi {
   }
 
   /**
-   * Sets the read timeout for new connections
+   * Sets the read timeout for new connections.
    *
    * @param readTimeout timeout value in seconds
    */
@@ -150,7 +148,7 @@ public class Payabbhi {
   }
 
   /**
-   * Sets the write timeout for new connections
+   * Sets the write timeout for new connections.
    *
    * @param writeTimeout timeout value in seconds
    */

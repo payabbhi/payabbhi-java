@@ -1,0 +1,48 @@
+{
+  "total_count": 3,
+  "object": "list",
+  "data": [
+    {
+      "id": "item_TbjJoQDGEL3KD4NM",
+      "object": "invoiceitem",
+      "name": "item 3",
+      "description": "desc 3 ",
+      "amount": -2000,
+      "currency": "INR",
+      "customer_id": "cust_J5fF1cj1KfSuI63S",
+      "invoice_id": "invc_3vByJIXxwzuTZJ1Q",
+      "subscription_id": "",
+      "quantity": 1,
+      "created_at": 1544711300,
+      "notes": null
+    },
+    {
+      "id": "item_3TMZsZIwKS5fX32N",
+      "object": "invoiceitem",
+      "name": "Item 2",
+      "description": "desc 2",
+      "amount": 2000,
+      "currency": "INR",
+      "customer_id": "cust_J5fF1cj1KfSuI63S",
+      "invoice_id": "invc_3vByJIXxwzuTZJ1Q",
+      "subscription_id": "",
+      "quantity": 3,
+      "created_at": 1544711300,
+      "notes": null
+    },
+    {
+      "id": "item_KI75WbBlizfzLZui",
+      "object": "invoiceitem",
+      "name": "Item 1",
+      "description": "desc 1",
+      "amount": 1000,
+      "currency": "INR",
+      "customer_id": "cust_J5fF1cj1KfSuI63S",
+      "invoice_id": "invc_3vByJIXxwzuTZJ1Q",
+      "subscription_id": "",
+      "quantity": 2,
+      "created_at": 1544711300,
+      "notes": null
+    }
+  ]
+}

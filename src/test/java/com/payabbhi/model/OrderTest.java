@@ -13,6 +13,7 @@ import org.junit.Test;
 @SuppressWarnings("serial")
 public class OrderTest extends BaseTest {
 
+  /** It setups the payabbhi object with accessID and secretKey. */
   @Before
   public void setUp() throws Exception {
     Payabbhi.accessId = "some_access_id";

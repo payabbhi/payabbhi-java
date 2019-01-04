@@ -13,6 +13,7 @@ import org.junit.Test;
 @SuppressWarnings("serial")
 public class PaymentTest extends BaseTest {
 
+  /** It setups the payabbhi object with accessID and secretKey. */
   @Before
   public void setUp() throws Exception {
     Payabbhi.accessId = "some_access_id";
@@ -66,5 +67,14 @@ public class PaymentTest extends BaseTest {
     assertNotEquals(null, refunds.getData());
     List<Refund> paylist = refunds.getData();
     assertEquals(1, paylist.size());
+  }
+
+  @Test
+  public void testRetrieveTransfersOfPayment() throws PayabbhiException {
+    PayabbhiCollection<Transfer> transfers = Payment.transfers("pay_R6mPqlzzukJTgWbS");
+    assertEquals(3, transfers.count().intValue());
+    assertNotEquals(null, transfers.getData());
+    List<Transfer> paylist = transfers.getData();
+    assertEquals(3, paylist.size());
   }
 }

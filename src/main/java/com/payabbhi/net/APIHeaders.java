@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 public class APIHeaders {
 
+  /** Return API headers. */
   public static Headers get() {
 
     Builder b = new Headers.Builder();

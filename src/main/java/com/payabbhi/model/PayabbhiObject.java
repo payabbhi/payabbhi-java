@@ -23,6 +23,7 @@ public class PayabbhiObject {
     this.modelJson = jsonObject;
   }
 
+  /** Return the value corresponding to a key in an object. */
   @SuppressWarnings("unchecked")
   public <T> T get(String key) {
     try {
