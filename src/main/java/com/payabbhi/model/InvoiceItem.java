@@ -65,4 +65,32 @@ public class InvoiceItem extends APIResource {
   public static InvoiceItem delete(String id) throws PayabbhiException {
     return request(Method.DELETE, urlFor(InvoiceItem.class, id), null, InvoiceItem.class);
   }
+
+  /**
+   * Returns a list of all invoices where this invoiceitem is attached
+   *
+   * @param id the identifier of the invoiceitem whose invoices are to be retrieved
+   * @return a collection of invoice objects
+   * @throws PayabbhiException if there is a problem in performing the operation
+   */
+  public static PayabbhiCollection<Invoice> invoices(String id) throws PayabbhiException {
+    return invoices(id, null);
+  }
+
+  /**
+   * Returns a list of all invoices where this invoiceitem is attached
+   *
+   * @param id the identifier of the invoiceitem whose invoices are to be retrieved
+   * @param params A map of optional parameters to refine the search
+   * @return a collection of invoice objects
+   * @throws PayabbhiException if there is a problem in performing the operation
+   */
+  public static PayabbhiCollection<Invoice> invoices(String id, Map<String, Object> params)
+      throws PayabbhiException {
+    return requestCollection(
+        Method.GET,
+        withParams(urlFor(InvoiceItem.class, id, "invoices"), params),
+        null,
+        Invoice.class);
+  }
 }

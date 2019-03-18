@@ -60,7 +60,7 @@
       "notify_by": "email",
       "payment_attempt": 0,
       "invoice_no": "34001",
-      "status": "active",
+      "status": "issued",
       "subscription_id": "",
       "url": "https://payscape.in/zvikzioy"
     }

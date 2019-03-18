@@ -56,14 +56,14 @@ public class Invoice extends APIResource {
   }
 
   /**
-   * Returns an invoice object matching the given invoice id.
+   * Voids an invoice
    *
-   * @param id an identifier of the invoice object to cancel
+   * @param id an identifier of the invoice object to void
    * @return an invoice object
    * @throws PayabbhiException if there is a problem in performing the operation.
    */
-  public static Invoice cancel(String id) throws PayabbhiException {
-    return request(Method.POST, urlFor(Invoice.class, id, "cancel"), null, Invoice.class);
+  public static Invoice markVoid(String id) throws PayabbhiException {
+    return request(Method.POST, urlFor(Invoice.class, id, "void"), null, Invoice.class);
   }
 
   /**

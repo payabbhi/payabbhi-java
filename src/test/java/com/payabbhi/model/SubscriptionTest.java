@@ -76,7 +76,7 @@ public class SubscriptionTest extends BaseTest {
     assertEquals("sub_luQ4QIXzaEIN0g5D", subscription.get("id"));
     assertEquals("plan_tuOWN0Sc0uMB4s8E", subscription.get("plan_id"));
     assertEquals("cust_2WmsQoSRZMWWkcZg", subscription.get("customer_id"));
-    assertEquals("automatic", subscription.get("billing_method"));
+    assertEquals("recurring", subscription.get("billing_method"));
   }
 
   @Test(expected = PayabbhiException.class)

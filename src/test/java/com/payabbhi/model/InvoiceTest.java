@@ -115,16 +115,16 @@ public class InvoiceTest extends BaseTest {
   }
 
   @Test
-  public void testCancelInvoice() throws PayabbhiException {
-    Invoice invoice = Invoice.cancel("invc_v9YicJdb67siaXue");
+  public void testVoidInvoice() throws PayabbhiException {
+    Invoice invoice = Invoice.markVoid("invc_v9YicJdb67siaXue");
     assertEquals("cust_J5fF1cj1KfSuI63S", invoice.get("customer_id"));
     assertEquals("INV_68934109", invoice.get("invoice_no"));
-    assertEquals("cancelled", invoice.get("status"));
+    assertEquals("void", invoice.get("status"));
   }
 
   @Test(expected = PayabbhiException.class)
   public void testCancelInvoiceWithInvalidID() throws PayabbhiException {
-    Invoice.cancel("invc_invalid");
+    Invoice.markVoid("invc_invalid");
   }
 
   @Test

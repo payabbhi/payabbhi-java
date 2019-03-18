@@ -28,7 +28,7 @@
   "notify_by": "",
   "payment_attempt": 0,
   "invoice_no": "INV_68934109",
-  "status": "cancelled",
+  "status": "void",
   "subscription_id": "sub_t8T6bQT25DPdgLyW",
   "url": "https://payabbhi.com/zt1vm1yb"
 }
