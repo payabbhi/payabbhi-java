@@ -14,6 +14,7 @@ public class PayabbhiObjectTest extends BaseTest {
 
   private PayabbhiObject payabbhiobject;
 
+  /** It setups the payabbhi object with accessID and secretKey. */
   @Before
   public void setUp() throws Exception {
     try {

@@ -24,6 +24,7 @@ public class APIResourceTest extends BaseTest {
   private String refundOfPaymentSrc;
   private String orderSrc;
 
+  /** It setups the payabbhi object with accessID and secretKey. */
   @Before
   public void setUp() throws IOException {
     ordersSrc = getResourceAsString("/collections/orders.json");

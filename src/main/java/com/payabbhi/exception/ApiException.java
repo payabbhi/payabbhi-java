@@ -23,7 +23,7 @@ public class ApiException extends PayabbhiException {
   private String field;
 
   /**
-   * Constructs a ApiException
+   * Constructs a ApiException.
    *
    * @param status HTTP status code
    * @param message description of the exception

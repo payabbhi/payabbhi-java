@@ -11,7 +11,7 @@ public class Payment extends APIResource {
   }
 
   /**
-   * Returns a list of payments created previously
+   * Returns a list of payments created previously.
    *
    * @return a collection of payment objects
    * @throws PayabbhiException if there is a problem in performing the operation
@@ -21,7 +21,7 @@ public class Payment extends APIResource {
   }
 
   /**
-   * Returns a list of payments created previously
+   * Returns a list of payments created previously.
    *
    * @param params a map of optional parameters to refine the search
    * @return a collection of payment objects
@@ -34,7 +34,7 @@ public class Payment extends APIResource {
   }
 
   /**
-   * Returns a payment object matching the given payment id
+   * Returns a payment object matching the given payment id.
    *
    * @param id an identifier of the payment object to retrieve
    * @return a payment object
@@ -70,7 +70,7 @@ public class Payment extends APIResource {
   }
 
   /**
-   * Returns a list of refunds for a given payment that have been previously created
+   * Returns a list of refunds for a given payment that have been previously created.
    *
    * @param id the identifier of the payment whose refunds are to be retrieved
    * @return a collection of refund objects
@@ -81,7 +81,7 @@ public class Payment extends APIResource {
   }
 
   /**
-   * Returns a list of refunds for a given payment that have been previously created
+   * Returns a list of refunds for a given payment that have been previously created.
    *
    * @param id the identifier of the payment whose refunds are to be retrieved
    * @param params a map of optional parameters to refine the search
@@ -95,5 +95,33 @@ public class Payment extends APIResource {
         withParams(urlFor(Payment.class, id, Refund.class), params),
         null,
         Refund.class);
+  }
+
+  /**
+   * Returns a list of Transfers for a given payment that have been previously created.
+   *
+   * @param id the identifier of the payment whose rransfers are to be retrieved
+   * @return a collection of Transfer objects
+   * @throws PayabbhiException if there is a problem in performing the operation
+   */
+  public static PayabbhiCollection<Transfer> transfers(String id) throws PayabbhiException {
+    return transfers(id, null);
+  }
+
+  /**
+   * Returns a list of Transfers for a given payment that have been previously created.
+   *
+   * @param id the identifier of the payment whose Transfers are to be retrieved
+   * @param params a map of optional parameters to refine the search
+   * @return a collection of Transfer objects
+   * @throws PayabbhiException if there is a problem in performing the operation
+   */
+  public static PayabbhiCollection<Transfer> transfers(String id, Map<String, Object> params)
+      throws PayabbhiException {
+    return requestCollection(
+        Method.GET,
+        withParams(urlFor(Payment.class, id, Transfer.class), params),
+        null,
+        Transfer.class);
   }
 }

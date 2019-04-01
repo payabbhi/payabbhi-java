@@ -3,7 +3,11 @@ package com.payabbhi.net;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import com.payabbhi.exception.*;
+import com.payabbhi.exception.ApiException;
+import com.payabbhi.exception.AuthenticationException;
+import com.payabbhi.exception.GatewayException;
+import com.payabbhi.exception.InvalidRequestException;
+import com.payabbhi.exception.PayabbhiException;
 import org.junit.Test;
 
 public class APIErrorResponseTest {

@@ -4,6 +4,7 @@ public class LiveAPIResponse implements APIResponse {
   String body;
   int status;
 
+  /** Return Live API response. */
   public LiveAPIResponse(String body, int status) {
     super();
     this.body = body;

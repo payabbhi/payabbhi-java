@@ -1,9 +1,10 @@
 package com.payabbhi.net;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import com.payabbhi.exception.PayabbhiException;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -126,12 +127,12 @@ public class SignatureTest {
   public void testVerifySignatureForValidWebhookWithoutReplay() {
     try {
       String payload = "test_payload";
-      Integer t = (int)((new Date().getTime())/1000);
-      String secret="skw_live_jHNxKsDqJusco5hA";
+      Integer t = (int) ((new Date().getTime()) / 1000);
+      String secret = "skw_live_jHNxKsDqJusco5hA";
       String message = payload + '&' + t.toString();
-      String v1 = Signature.sha256(message,secret);
+      String v1 = Signature.sha256(message, secret);
       String actualSignature = "t=" + t.toString() + ", v1=" + v1;
-      boolean result = Signature.verifyWebhookSignature(payload,actualSignature,secret,300);
+      boolean result = Signature.verifyWebhookSignature(payload, actualSignature, secret, 300);
       assertEquals(true, result);
     } catch (PayabbhiException e) {
       fail("Error : testVerifySignatureForValidWebhookWithoutReplay - " + e.toString());
@@ -142,12 +143,12 @@ public class SignatureTest {
   public void testVerifySignatureForValidWebhookWithReplay() {
     try {
       String payload = "test_payload";
-      Integer t = (int)((new Date().getTime())/1000);
-      String secret="skw_live_jHNxKsDqJusco5hA";
+      Integer t = (int) ((new Date().getTime()) / 1000);
+      String secret = "skw_live_jHNxKsDqJusco5hA";
       String message = payload + '&' + t.toString();
-      String v1 = Signature.sha256(message,secret);
+      String v1 = Signature.sha256(message, secret);
       String actualSignature = "t=" + t.toString() + ", v1=" + v1;
-      boolean result = Signature.verifyWebhookSignature(payload,actualSignature,secret,40);
+      boolean result = Signature.verifyWebhookSignature(payload, actualSignature, secret, 40);
       assertEquals(true, result);
     } catch (PayabbhiException e) {
       fail("Error : testVerifySignatureForValidWebhookWithReplay - " + e.toString());
@@ -158,12 +159,12 @@ public class SignatureTest {
   public void testVerifySignatureForValidWebhookWithReplayAttack() {
     try {
       String payload = "test_payload";
-      Integer t = (int)((new Date().getTime())/1000 -20);
-      String secret="skw_live_jHNxKsDqJusco5hA";
+      Integer t = (int) ((new Date().getTime()) / 1000 - 20);
+      String secret = "skw_live_jHNxKsDqJusco5hA";
       String message = payload + '&' + t.toString();
-      String v1 = Signature.sha256(message,secret);
+      String v1 = Signature.sha256(message, secret);
       String actualSignature = "t=" + t.toString() + ", v1=" + v1;
-      boolean result = Signature.verifyWebhookSignature(payload,actualSignature,secret,10);
+      boolean result = Signature.verifyWebhookSignature(payload, actualSignature, secret, 10);
       assertEquals(false, result);
     } catch (PayabbhiException e) {
       fail("Error : testVerifySignatureForValidWebhookWithReplayAttack - " + e.toString());
@@ -174,12 +175,12 @@ public class SignatureTest {
   public void testVerifySignatureForInValidWebhook() {
     try {
       String payload = "test_payload";
-      Integer t = (int)((new Date().getTime())/1000 -20);
-      String secret="skw_live_jHNxKsDqJusco5hA";
+      Integer t = (int) ((new Date().getTime()) / 1000 - 20);
+      String secret = "skw_live_jHNxKsDqJusco5hA";
       String message = payload + '&' + t.toString();
-      String v1 = Signature.sha256(message,secret+"random");
+      String v1 = Signature.sha256(message, secret + "random");
       String actualSignature = "t=" + t.toString() + ", v1=" + v1;
-      boolean result = Signature.verifyWebhookSignature(payload,actualSignature,secret,10);
+      boolean result = Signature.verifyWebhookSignature(payload, actualSignature, secret, 10);
       assertEquals(false, result);
     } catch (PayabbhiException e) {
       fail("Error : testVerifySignatureForInValidWebhook - " + e.toString());
@@ -189,7 +190,7 @@ public class SignatureTest {
   @Test
   public void testVerifySignatureForEmptyData() {
     try {
-      boolean result = Signature.verifyWebhookSignature("","actualSignature","secret",10);
+      boolean result = Signature.verifyWebhookSignature("", "actualSignature", "secret", 10);
       assertEquals(false, result);
       fail("Error : testVerifySignatureForNullData didn't throw PayabbhiException");
     } catch (PayabbhiException e) {
@@ -200,7 +201,7 @@ public class SignatureTest {
   @Test
   public void testVerifySignatureForEmptyActualSignature() {
     try {
-      boolean result = Signature.verifyWebhookSignature("data","","secret",10);
+      boolean result = Signature.verifyWebhookSignature("data", "", "secret", 10);
       assertEquals(false, result);
       fail("Error : testVerifySignatureForEmptyActualSignature didn't throw PayabbhiException");
     } catch (PayabbhiException e) {
@@ -211,7 +212,7 @@ public class SignatureTest {
   @Test
   public void testVerifySignatureForEmptySecret() {
     try {
-      boolean result = Signature.verifyWebhookSignature("data","actualSignature","",10);
+      boolean result = Signature.verifyWebhookSignature("data", "actualSignature", "", 10);
       assertEquals(false, result);
       fail("Error : testVerifySignatureForEmptySecret didn't throw PayabbhiException");
     } catch (PayabbhiException e) {

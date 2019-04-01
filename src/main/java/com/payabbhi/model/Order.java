@@ -21,6 +21,8 @@ public class Order extends APIResource {
   }
 
   /**
+   * Returns a list of orders created previously with parameters.
+   *
    * @param params a map of optional parameters to refine the search
    * @return a collection of order objects
    * @throws PayabbhiException if there is a problem in performing the operation.
@@ -31,7 +33,7 @@ public class Order extends APIResource {
   }
 
   /**
-   * Returns an order object matching the given order id
+   * Returns an order object matching the given order id.
    *
    * @param id an identifier of the order object to retrieve
    * @return an order object
