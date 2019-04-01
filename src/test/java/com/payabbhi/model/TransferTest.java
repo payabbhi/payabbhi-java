@@ -5,8 +5,10 @@ import static org.junit.Assert.assertNotEquals;
 
 import com.payabbhi.Payabbhi;
 import com.payabbhi.exception.PayabbhiException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -72,16 +74,18 @@ public class TransferTest extends BaseTest {
 
   @Test
   public void testCreateNewTransfer() throws PayabbhiException {
-    Transfer transfer =
-        Transfer.create(
-            "pay_W2FmbqANt09epUOz",
-            new HashMap<String, Object>() {
-              {
-                put("recipient_id", "recp_Y2ojRlJVqRMhB0Ay");
-                put("amount", 50);
-                put("currency", "INR");
-              }
-            });
+    Map<String, Object> transfer1 = new HashMap<>();
+    transfer1.put("recipient_id", "recp_Y2ojRlJVqRMhB0Ay");
+    transfer1.put("amount", 50);
+    transfer1.put("currency", "INR");
+
+    List<Object> tranfersPayload = new ArrayList<>();
+    tranfersPayload.add(transfer1);
+
+    Map<String, Object> options = new HashMap<>();
+    options.put("transfers", tranfersPayload);
+
+    Transfer transfer = Transfer.create("pay_W2FmbqANt09epUOz", options);
     JSONArray dataArr = (JSONArray) transfer.get("data");
     JSONObject transferObj = dataArr.getJSONObject(0);
     assertEquals("trans_ucwszWrXUZJGDgMX", transferObj.getString("id"));

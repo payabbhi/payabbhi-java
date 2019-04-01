@@ -67,7 +67,7 @@ public class InvoiceItem extends APIResource {
   }
 
   /**
-   * Returns a list of all invoices where this invoiceitem is attached
+   * Returns a list of all invoices where this invoiceitem is attached.
    *
    * @param id the identifier of the invoiceitem whose invoices are to be retrieved
    * @return a collection of invoice objects
@@ -78,7 +78,7 @@ public class InvoiceItem extends APIResource {
   }
 
   /**
-   * Returns a list of all invoices where this invoiceitem is attached
+   * Returns a list of all invoices where this invoiceitem is attached.
    *
    * @param id the identifier of the invoiceitem whose invoices are to be retrieved
    * @param params A map of optional parameters to refine the search
