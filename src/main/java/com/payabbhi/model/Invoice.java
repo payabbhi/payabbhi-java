@@ -56,7 +56,7 @@ public class Invoice extends APIResource {
   }
 
   /**
-   * Voids an invoice
+   * Voids an invoice.
    *
    * @param id an identifier of the invoice object to void
    * @return an invoice object
