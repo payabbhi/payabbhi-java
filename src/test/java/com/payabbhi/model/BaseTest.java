@@ -492,25 +492,20 @@ public class BaseTest {
 				.thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
 		// Create a transfer with less parameter
-		when(mf.fetch(Method.POST, "https://payabbhi.com/api/v1/transfers",
-				"{\"source_id\":\"pay_W2FmbqANt09epUOz\",\"recipient_id\":\"recp_Y2ojRlJVqRMhB0Ay\"}"))
-						.thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
-
-		// Create a transfer with less parameter 1.7
-		when(mf.fetch(Method.POST, "https://payabbhi.com/api/v1/transfers",
-				"{\"recipient_id\":\"recp_Y2ojRlJVqRMhB0Ay\",\"source_id\":\"pay_W2FmbqANt09epUOz\"}"))
+		when(mf.fetch(Method.POST, "https://payabbhi.com/api/v1/payments/pay_W2FmbqANt09epUOz/transfers",
+				"{\"recipient_id\":\"recp_Y2ojRlJVqRMhB0Ay\"}"))
 						.thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
 		// Create a transfer
-		when(mf.fetch(Method.POST, "https://payabbhi.com/api/v1/transfers",
-				"{\"amount\":50,\"currency\":\"INR\",\"source_id\":\"pay_W2FmbqANt09epUOz\","
+		when(mf.fetch(Method.POST, "https://payabbhi.com/api/v1/payments/pay_W2FmbqANt09epUOz/transfers",
+				"{\"amount\":50,\"currency\":\"INR\","
 						+ "\"recipient_id\":\"recp_Y2ojRlJVqRMhB0Ay\"}"))
 								.thenReturn(respondWith("/api/v1/transfers/create.json", 200));
 
 		// Create a transfer 1.7
-		when(mf.fetch(Method.POST, "https://payabbhi.com/api/v1/transfers",
+		when(mf.fetch(Method.POST, "https://payabbhi.com/api/v1/payments/pay_W2FmbqANt09epUOz/transfers",
 				"{\"recipient_id\":\"recp_Y2ojRlJVqRMhB0Ay\",\"amount\":50,"
-						+ "\"source_id\":\"pay_W2FmbqANt09epUOz\",\"currency\":\"INR\"}"))
+						+ "\"currency\":\"INR\"}"))
 								.thenReturn(respondWith("/api/v1/transfers/create.json", 200));
 
 		// Get all events

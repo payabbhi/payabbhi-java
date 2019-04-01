@@ -47,11 +47,12 @@ public class Transfer extends APIResource {
   /**
    * Creates a new transfer.
    *
+   * @param sourceId is the paymentID from which amount is transferred to different recipients
    * @param params a map consisting of parameters used for creating an transfer object:
    * @return the newly created transfer object
    * @throws PayabbhiException if there is a problem in performing the operation.
    */
-  public static Transfer create(Map<String, Object> params) throws PayabbhiException {
-    return request(Method.POST, urlFor(Transfer.class), params, Transfer.class);
+  public static Transfer create(String sourceId, Map<String, Object> params) throws PayabbhiException {
+    return request(Method.POST, urlFor(Payment.class, sourceId, Transfer.class), params, Transfer.class);
   }
 }
