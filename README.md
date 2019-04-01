@@ -108,3 +108,19 @@ Payabbhi.verifyWebhookSignature("<payload>", "<signature>", "<secret>");
 
 Payabbhi.verifyWebhookSignature("<payload>", "<signature>", "<secret>", <replayInterval>);
 ```
+
+## Test
+Comment the following lines of code in the file build.gradle as below
+
+```sh
+// id 'signing'
+// signing {
+//     sign configurations.archives
+// }
+```
+
+Run the following command to build and execute unit tests
+```sh
+$ gradle build
+```
+A html report will be generated in file build/reports/tests/test/index.html

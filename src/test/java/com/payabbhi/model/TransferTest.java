@@ -7,6 +7,8 @@ import com.payabbhi.Payabbhi;
 import com.payabbhi.exception.PayabbhiException;
 import java.util.HashMap;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -72,27 +74,29 @@ public class TransferTest extends BaseTest {
   public void testCreateNewTransfer() throws PayabbhiException {
     Transfer transfer =
         Transfer.create(
+            "pay_W2FmbqANt09epUOz",
             new HashMap<String, Object>() {
               {
-                put("source_id", "pay_W2FmbqANt09epUOz");
                 put("recipient_id", "recp_Y2ojRlJVqRMhB0Ay");
                 put("amount", 50);
                 put("currency", "INR");
               }
             });
-    assertEquals("trans_ucwszWrXUZJGDgMX", transfer.get("id"));
-    assertEquals((Integer) 50, transfer.get("amount"));
-    assertEquals("INR", transfer.get("currency"));
-    assertEquals("pay_W2FmbqANt09epUOz", transfer.get("source_id"));
-    assertEquals("recp_Y2ojRlJVqRMhB0Ay", transfer.get("recipient_id"));
+    JSONArray dataArr = (JSONArray) transfer.get("data");
+    JSONObject transferObj = dataArr.getJSONObject(0);
+    assertEquals("trans_ucwszWrXUZJGDgMX", transferObj.getString("id"));
+    assertEquals((Integer) 50, transferObj.getNumber("amount"));
+    assertEquals("INR", transferObj.getString("currency"));
+    assertEquals("pay_W2FmbqANt09epUOz", transferObj.getString("source_id"));
+    assertEquals("recp_Y2ojRlJVqRMhB0Ay", transferObj.getString("recipient_id"));
   }
 
   @Test(expected = PayabbhiException.class)
   public void testCreateNewTransferWithLessParams() throws PayabbhiException {
     Transfer.create(
+        "pay_W2FmbqANt09epUOz",
         new HashMap<String, Object>() {
           {
-            put("source_id", "pay_W2FmbqANt09epUOz");
             put("recipient_id", "recp_Y2ojRlJVqRMhB0Ay");
           }
         });
