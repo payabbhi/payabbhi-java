@@ -71,38 +71,4 @@ public class TransferTest extends BaseTest {
   public void testRetrieveTransferWithInvalidID() throws PayabbhiException {
     Transfer.retrieve("trans_invalid");
   }
-
-  @Test
-  public void testCreateNewTransfer() throws PayabbhiException {
-    Map<String, Object> transfer1 = new HashMap<>();
-    transfer1.put("recipient_id", "recp_Y2ojRlJVqRMhB0Ay");
-    transfer1.put("amount", 50);
-    transfer1.put("currency", "INR");
-
-    List<Object> tranfersPayload = new ArrayList<>();
-    tranfersPayload.add(transfer1);
-
-    Map<String, Object> options = new HashMap<>();
-    options.put("transfers", tranfersPayload);
-
-    Transfer transfer = Transfer.create("pay_W2FmbqANt09epUOz", options);
-    JSONArray dataArr = (JSONArray) transfer.get("data");
-    JSONObject transferObj = dataArr.getJSONObject(0);
-    assertEquals("trans_ucwszWrXUZJGDgMX", transferObj.getString("id"));
-    assertEquals((Integer) 50, transferObj.getNumber("amount"));
-    assertEquals("INR", transferObj.getString("currency"));
-    assertEquals("pay_W2FmbqANt09epUOz", transferObj.getString("source_id"));
-    assertEquals("recp_Y2ojRlJVqRMhB0Ay", transferObj.getString("recipient_id"));
-  }
-
-  @Test(expected = PayabbhiException.class)
-  public void testCreateNewTransferWithLessParams() throws PayabbhiException {
-    Transfer.create(
-        "pay_W2FmbqANt09epUOz",
-        new HashMap<String, Object>() {
-          {
-            put("recipient_id", "recp_Y2ojRlJVqRMhB0Ay");
-          }
-        });
-  }
 }

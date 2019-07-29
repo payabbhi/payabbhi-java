@@ -131,7 +131,7 @@ public class BaseTest {
     // Get All Transfer Associated with Payment
     when(mf.fetch(
             Method.GET,
-            "https://payabbhi.com/api/v1/payments/pay_R6mPqlzzukJTgWbS/transfers",
+            "https://payabbhi.com/api/v1/payments/pay_zlAsx5g7yH88xcFE/transfers",
             EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/payments/transfers.json", 200));
 
@@ -184,7 +184,7 @@ public class BaseTest {
             Method.GET, "https://payabbhi.com/api/v1/customers/cust_NDgjdWVgjKyb0qac", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/customers/cust_NDgjdWVgjKyb0qac.json", 200));
 
-    // Retrieve a customer wiht invalid ID
+    // Retrieve a customer with invalid ID
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/customers/cust_invalid", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
@@ -216,7 +216,7 @@ public class BaseTest {
             "{\"email\":\"abc@bca.com\",\"contact_no\":\"9876543\"}"))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
-    // Create a customer without emailid
+    // Create a customer without email id
     when(mf.fetch(
             Method.POST,
             "https://payabbhi.com/api/v1/customers",
@@ -248,7 +248,7 @@ public class BaseTest {
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/products", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/products/all.json", 200));
 
-    // Get products with count =1
+    // Get products with count=1
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/products?count=1", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/products/filteredall.json", 200));
 
@@ -298,7 +298,7 @@ public class BaseTest {
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/plans?count=2", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/plans/filteredall.json", 200));
 
-    // Retrieve a plan withinvalid ID
+    // Retrieve a plan with invalid ID
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/plans/plan_invalid", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
@@ -411,7 +411,7 @@ public class BaseTest {
     // Cancel a subscription with option
     when(mf.fetch(
             Method.POST,
-            "https://payabbhi.com/api/v1/subscriptions/sub_luQ4QIXzaEIN0g5D/cancel",
+            "https://payabbhi.com/api/v1/subscriptions/sub_xLH108FJwUlX47SI/cancel",
             "{\"at_billing_cycle_end\":true}"))
         .thenReturn(respondWith("/api/v1/subscriptions/filtercancel.json", 200));
 
@@ -487,10 +487,10 @@ public class BaseTest {
             EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/invoiceitems/delete.json", 200));
 
-    // Get invoices with customer_id = cust_J5fF1cj1KfSuI63S
+    // Get invoices with subscription_id = sub_kds3f349dsl4dk9x
     when(mf.fetch(
             Method.GET,
-            "https://payabbhi.com/api/v1/invoices?customer_id=cust_J5fF1cj1KfSuI63S",
+            "https://payabbhi.com/api/v1/invoices?subscription_id=sub_kds3f349dsl4dk9x",
             EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/invoices/filteredall.json", 200));
 
@@ -525,7 +525,7 @@ public class BaseTest {
             Method.GET, "https://payabbhi.com/api/v1/invoices/invc_v9YicJdb67siaXue", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/invoices/invc_v9YicJdb67siaXue.json", 200));
 
-    // Retrieve a invocice with invalid ID
+    // Retrieve a invoice with invalid ID
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/invoices/invc_invalid", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
@@ -588,7 +588,7 @@ public class BaseTest {
             Method.GET, "https://payabbhi.com/api/v1/invoices/invc_invalid/line_items", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
-    // Void an inovice
+    // Void an invoice
     when(mf.fetch(
             Method.POST,
             "https://payabbhi.com/api/v1/invoices/invc_v9YicJdb67siaXue/void",
@@ -598,14 +598,14 @@ public class BaseTest {
     // Retrieve all payment of an invoice
     when(mf.fetch(
             Method.GET,
-            "https://payabbhi.com/api/v1/invoices/invc_123456700test002/payments",
+            "https://payabbhi.com/api/v1/invoices/invt_srxOZZk6dIgWTVls/payments",
             EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/invoices/payments.json", 200));
 
     // Retrieve all line_items of an invoice
     when(mf.fetch(
             Method.GET,
-            "https://payabbhi.com/api/v1/invoices/invc_123456700test002/line_items",
+            "https://payabbhi.com/api/v1/invoices/item_FL3nHHB7i7Fpcj1J/line_items",
             EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/invoices/items.json", 200));
 
@@ -613,7 +613,7 @@ public class BaseTest {
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/transfers", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/transfers/all.json", 200));
 
-    // Get transfers with count =1
+    // Get transfers with count=1
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/transfers?count=2", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/transfers/filteredall.json", 200));
 
@@ -633,23 +633,23 @@ public class BaseTest {
     // Create a transfer with less parameter
     when(mf.fetch(
             Method.POST,
-            "https://payabbhi.com/api/v1/payments/pay_W2FmbqANt09epUOz/transfers",
-            "{\"recipient_id\":\"recp_Y2ojRlJVqRMhB0Ay\"}"))
+            "https://payabbhi.com/api/v1/payments/pay_zlAsx5g7yH88xcFE/transfers",
+            "{\"beneficiary_id\":\"bene_invalidId\"}"))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
     // Create a transfer
     when(mf.fetch(
             Method.POST,
-            "https://payabbhi.com/api/v1/payments/pay_W2FmbqANt09epUOz/transfers",
-            "{\"transfers\":[{\"amount\":50,\"currency\":\"INR\","
-                + "\"recipient_id\":\"recp_Y2ojRlJVqRMhB0Ay\"}]}"))
+            "https://payabbhi.com/api/v1/payments/pay_zlAsx5g7yH88xcFE/transfers",
+            "{\"transfers\":[{\"amount\":20,\"currency\":\"INR\","
+                + "\"beneficiary_id\":\"bene_d7d8b37d264c4264\"}]}"))
         .thenReturn(respondWith("/api/v1/transfers/create.json", 200));
 
     // Create a transfer 1.7
     when(mf.fetch(
             Method.POST,
-            "https://payabbhi.com/api/v1/payments/pay_W2FmbqANt09epUOz/transfers",
-            "{\"transfers\":[{\"recipient_id\":\"recp_Y2ojRlJVqRMhB0Ay\",\"amount\":50,"
+            "https://payabbhi.com/api/v1/payments/pay_zlAsx5g7yH88xcFE/transfers",
+            "{\"transfers\":[{\"beneficiary_id\":\"bene_d7d8b37d264c4264\",\"amount\":20,"
                 + "\"currency\":\"INR\"}]}"))
         .thenReturn(respondWith("/api/v1/transfers/create.json", 200));
 
@@ -657,7 +657,7 @@ public class BaseTest {
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/events", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/events/all.json", 200));
 
-    // Get events with type =payment.refunded
+    // Get events with type=payment.refunded
     when(mf.fetch(
             Method.GET, "https://payabbhi.com/api/v1/events?type=payment.refunded", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/events/filteredall.json", 200));
@@ -674,7 +674,89 @@ public class BaseTest {
     // Retrieve a event with invalid id
     when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/events/evt_invalid", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Get all settlements
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/settlements", EMPTY_BODY))
+    .thenReturn(respondWith("/api/v1/settlements/all.json", 200));
+    
+    // Get settlements with filter count=1
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/settlements?count=1", EMPTY_BODY))
+    .thenReturn(respondWith("/api/v1/settlements/filteredall.json", 200));
+    
+    // Get all settlements will throw error because of invalid params
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/settlements?count=", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
+    // Retrieve a settlement
+    when(mf.fetch(
+            Method.GET, "https://payabbhi.com/api/v1/settlements/stl_wmjBUMNyLnzGbFKU", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/settlements/stl_wmjBUMNyLnzGbFKU.json", 200));
+
+    // Retrieve a settlement with invalid id
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/settlements/set_invalid", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Create a payment_link
+    when(mf.fetch(
+          Method.POST,
+          "https://payabbhi.com/api/v1/payment_links",
+          "{\"customer_id\":\"cust_2WmsQoSRZMWWkcZg\",\"amount\":100,\"currency\":\"INR\"}"))
+      .thenReturn(respondWith("/api/v1/payment_links/create.json", 200));
+    
+    // Create a payment_link with less params
+    when(mf.fetch(
+            Method.POST,
+            "https://payabbhi.com/api/v1/payment_links",
+            "{\"customer_id\":\"cust_J5fF1cj1KfSuI63S\"}"))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Get all payment_links
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/payment_links", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/payment_links/all.json", 200));
+    
+    // Get payment_links with count = 1
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/payment_links?count=1", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/payment_links/filteredall.json", 200));
+    
+    // Get all payment_links will throw error because of invalid params
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/payment_links?count=", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 200));
+    
+    // Retrieve a payment_link
+    when(mf.fetch(
+            Method.GET, "https://payabbhi.com/api/v1/payment_links/invc_NRFJkTGyZYo03cPD", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/payment_links/invc_NRFJkTGyZYo03cPD.json", 200));
+    
+    // Retrieve a payment_link with invalid ID
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/payment_links/invc_invalid", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Cancel a payment_link
+    when(mf.fetch(
+            Method.POST,
+            "https://payabbhi.com/api/v1/payment_links/invc_NRFJkTGyZYo03cPD/cancel",
+            EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/payment_links/cancel.json", 200));
+
+    // Cancel an payment link with invalid ID
+    when(mf.fetch(
+            Method.POST, "https://payabbhi.com/api/v1/payment_links/invc_invalid/cancel", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Retrieve all payment of an invoice with invalid payment_link ID
+    when(mf.fetch(
+            Method.GET, "https://payabbhi.com/api/v1/payment_links/invc_invalid/payments", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+
+    // Retrieve all payment of an invoice
+    when(mf.fetch(
+            Method.GET,
+            "https://payabbhi.com/api/v1/payment_links/invc_NRFJkTGyZYo03cPD/payments",
+            EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/payment_links/payments.json", 200));
+
+
+    
     APIResource.setFetcher(mf);
   }
 }

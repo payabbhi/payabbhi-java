@@ -5,8 +5,14 @@ import static org.junit.Assert.assertNotEquals;
 
 import com.payabbhi.Payabbhi;
 import com.payabbhi.exception.PayabbhiException;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -71,10 +77,44 @@ public class PaymentTest extends BaseTest {
 
   @Test
   public void testRetrieveTransfersOfPayment() throws PayabbhiException {
-    PayabbhiCollection<Transfer> transfers = Payment.transfers("pay_R6mPqlzzukJTgWbS");
-    assertEquals(3, transfers.count().intValue());
+    PayabbhiCollection<Transfer> transfers = Payment.transfers("pay_zlAsx5g7yH88xcFE");
+    assertEquals(2, transfers.count().intValue());
     assertNotEquals(null, transfers.getData());
     List<Transfer> paylist = transfers.getData();
-    assertEquals(3, paylist.size());
+    assertEquals(2, paylist.size());
+  }
+  
+  @Test
+  public void testCreateNewTransfer() throws PayabbhiException {
+    Map<String, Object> transfer1 = new HashMap<>();
+    transfer1.put("beneficiary_id", "bene_d7d8b37d264c4264");
+    transfer1.put("amount", 20);
+    transfer1.put("currency", "INR");
+
+    List<Object> tranfersPayload = new ArrayList<>();
+    tranfersPayload.add(transfer1);
+
+    Map<String, Object> options = new HashMap<>();
+    options.put("transfers", tranfersPayload);
+
+    PayabbhiCollection<Transfer> transfer = Payment.transfer("pay_zlAsx5g7yH88xcFE", options);
+    JSONArray dataArr = (JSONArray) transfer.get("data");
+    JSONObject transferObj = dataArr.getJSONObject(0);
+    assertEquals("trans_b5ggPH8LUbfe0Qfg", transferObj.getString("id"));
+    assertEquals((Integer) 20, transferObj.getNumber("amount"));
+    assertEquals("INR", transferObj.getString("currency"));
+    assertEquals("pay_zlAsx5g7yH88xcFE", transferObj.getString("source_id"));
+    assertEquals("bene_d7d8b37d264c4264", transferObj.getString("beneficiary_id"));
+  }
+
+  @Test(expected = PayabbhiException.class)
+  public void testCreateNewTransferWithLessParams() throws PayabbhiException {
+    Payment.transfer(
+        "pay_zlAsx5g7yH88xcFE",
+        new HashMap<String, Object>() {
+          {
+            put("beneficiary_id", "bene_invalidId");
+          }
+        });
   }
 }

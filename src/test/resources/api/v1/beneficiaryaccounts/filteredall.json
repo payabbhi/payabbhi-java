@@ -1,0 +1,41 @@
+{
+  "total_count": 2,
+  "object": "list",
+  "data": [
+    {
+      "id": "bene_d03f199815ef4ce9",
+      "object": "beneficiary_account",
+      "name": "ui_test02",
+      "contact_no": "9999999999",
+      "email_id": "test@gmail.com",
+      "business_name": "ui_test02",
+      "business_entity_type": "Individual",
+      "beneficiary_name": "ui_test02",
+      "ifsc": "ABCD0001890",
+      "bank_account_number": "50100030219",
+      "account_type": "Savings",
+      "status": "created",
+      "notes": null,
+      "created_at": 1562322992
+    },
+    {
+      "id": "bene_d7d8b37d264c4264",
+      "object": "beneficiary_account",
+      "name": "ui_test",
+      "contact_no": "9888888888",
+      "email_id": "ui_test@abc.com",
+      "business_name": "UI-Test",
+      "business_entity_type": "Individual",
+      "beneficiary_name": "ui_test",
+      "ifsc": "ABCD0001890",
+      "bank_account_number": "50100000219",
+      "account_type": "Savings",
+      "status": "registered",
+      "notes": {
+        "api": "no",
+        "ui": "yes"
+      },
+      "created_at": 1562322515
+    }
+  ]
+}

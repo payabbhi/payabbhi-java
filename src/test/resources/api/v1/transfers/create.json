@@ -3,21 +3,20 @@
   "object": "list",
   "data": [
     {
-      "id": "trans_ucwszWrXUZJGDgMX",
+      "id": "trans_b5ggPH8LUbfe0Qfg",
       "object": "transfer",
-      "description": "Test Transfer",
-      "source_id": "pay_W2FmbqANt09epUOz",
-      "recipient_id": "recp_Y2ojRlJVqRMhB0Ay",
-      "amount": 50,
+      "description": "Tranfer 1",
+      "source_id": "pay_zlAsx5g7yH88xcFE",
+      "beneficiary_id": "bene_d7d8b37d264c4264",
+      "amount": 20,
       "currency": "INR",
-      "fees": 0,
+      "fee": 0,
       "gst": 0,
-      "notes": {
-        "home": {
-          "city": "kolkata"
-        }
-      },
-      "created_at": 1540882106
+      "amount_reversed": "",
+      "settlement_id": "",
+      "settled": "",
+      "notes":"",
+      "created_at": 1562325980
     }
-  ]
-}
+   ]
+ }
