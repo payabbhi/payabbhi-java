@@ -1,34 +1,56 @@
 {
-  "id": "invc_v9YicJdb67siaXue",
+  "id": "invt_ZBymDifGQqgHPISh",
   "object": "invoice",
-  "amount": 10000,
-  "billing_method": "manual",
-  "customer_id": "cust_J5fF1cj1KfSuI63S",
+  "gross_amount": 180,
+  "tax_amount": 12,
+  "amount": 192,
+  "billing_method": "recurring",
+  "customer_id": "cust_VD9uYO8uc29b4hY8",
   "currency": "INR",
-  "created_at": 1544640062,
-  "description": "",
-  "due_date": 1544899262,
-  "line_items": [
-    {
-      "id": "item_zHPYd3Ro7ImGxUHB",
-      "object": "invoiceitem",
-      "name": "Amazom Prime Videos",
-      "description": "",
-      "amount": 10000,
-      "currency": "INR",
-      "customer_id": "cust_J5fF1cj1KfSuI63S",
-      "invoice_id": "invc_v9YicJdb67siaXue",
-      "subscription_id": "sub_t8T6bQT25DPdgLyW",
-      "quantity": 1,
-      "created_at": 1544640062,
-      "notes": null
-    }
-  ],
-  "notes": null,
-  "notify_by": "",
+  "created_at": 1539179543,
+  "description": "TestInvoice",
+  "due_date": 1549176945,
+  "line_items": {
+    "total_count": 1,
+    "object": "list",
+    "data": [
+      {
+        "id": "item_Jz6dd6uLbu05Y5kk",
+        "object": "invoiceitem",
+        "name": "Item1",
+        "description": "",
+        "amount": 500,
+        "currency": "INR",
+        "customer_id": "cust_VD9uYO8uc29b4hY8",
+        "quantity": 1,
+        "created_at": 1539179491,
+        "notes": null,
+        "deleted_at": 0,
+        "unit": "",
+        "hsn_code": "hsn_code",
+        "sac_code": "",
+        "taxrate": 500,
+        "cess": 200,
+        "tax_inclusive": false,
+        "discount": 20,
+        "tax_amount": 12,
+        "net_amount": 192,
+        "taxable_amount": 180,
+        "gross_amount": 180
+      }
+    ]
+  },
+  "notes": {
+    "mode": "test"
+  },
+  "notify_by": "email",
   "payment_attempt": 0,
-  "invoice_no": "INV_68934109",
+  "invoice_no": "123123123123",
   "status": "void",
-  "subscription_id": "sub_t8T6bQT25DPdgLyW",
-  "url": "https://payabbhi.com/zt1vm1yb"
+  "subscription_id": "",
+  "url": "https://payabbhi.com/zro4qjer",
+  "place_of_supply": "Delhi",
+  "terms_conditions": "terms_conditions",
+  "customer_notes": "customer_notes",
+  "customer_notification_by":"platform"
 }

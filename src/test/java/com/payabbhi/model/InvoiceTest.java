@@ -47,12 +47,12 @@ public class InvoiceTest extends BaseTest {
   }
 
   @Test
-  public void testGetAllInvoicesWithCustomerID() throws PayabbhiException {
+  public void testGetAllInvoicesWithSubscriptionID() throws PayabbhiException {
     PayabbhiCollection<Invoice> invoices =
         Invoice.all(
             new HashMap<String, Object>() {
               {
-                put("customer_id", "cust_J5fF1cj1KfSuI63S");
+                put("subscription_id", "sub_kds3f349dsl4dk9x");
               }
             });
     assertEquals(2, invoices.count().intValue());
@@ -76,7 +76,7 @@ public class InvoiceTest extends BaseTest {
   public void testRetrieveInvoiceDetails() throws PayabbhiException {
     Invoice invoice = Invoice.retrieve("invc_v9YicJdb67siaXue");
     assertEquals("invc_v9YicJdb67siaXue", invoice.get("id"));
-    assertEquals("cust_J5fF1cj1KfSuI63S", invoice.get("customer_id"));
+    assertEquals("cust_2WmsQoSRZMWWkcZg", invoice.get("customer_id"));
   }
 
   @Test(expected = PayabbhiException.class)
@@ -99,11 +99,11 @@ public class InvoiceTest extends BaseTest {
     items.add(item1);
     options.put("line_items", items);
     Invoice invoice = Invoice.create(options);
-    assertEquals("invc_v9YicJdb67siaXue", invoice.get("id"));
-    assertEquals("cust_J5fF1cj1KfSuI63S", invoice.get("customer_id"));
-    assertEquals((Integer) 1544899262, invoice.get("due_date"));
+    assertEquals("invt_v1uXGmhIUMylFQPS", invoice.get("id"));
+    assertEquals("cust_2WmsQoSRZMWWkcZg", invoice.get("customer_id"));
+    assertEquals((Integer) 1549176945, invoice.get("due_date"));
     assertEquals("INR", invoice.get("currency"));
-    assertEquals("INV_68934109", invoice.get("invoice_no"));
+    assertEquals("123123123123", invoice.get("invoice_no"));
   }
 
   @Test(expected = PayabbhiException.class)
@@ -117,8 +117,8 @@ public class InvoiceTest extends BaseTest {
   @Test
   public void testVoidInvoice() throws PayabbhiException {
     Invoice invoice = Invoice.markVoid("invc_v9YicJdb67siaXue");
-    assertEquals("cust_J5fF1cj1KfSuI63S", invoice.get("customer_id"));
-    assertEquals("INV_68934109", invoice.get("invoice_no"));
+    assertEquals("cust_VD9uYO8uc29b4hY8", invoice.get("customer_id"));
+    assertEquals("123123123123", invoice.get("invoice_no"));
     assertEquals("void", invoice.get("status"));
   }
 
@@ -129,7 +129,7 @@ public class InvoiceTest extends BaseTest {
 
   @Test
   public void testRetrievePaymentsOfInvoice() throws PayabbhiException {
-    PayabbhiCollection<Payment> payments = Invoice.payments("invc_123456700test002");
+    PayabbhiCollection<Payment> payments = Invoice.payments("invt_srxOZZk6dIgWTVls");
     assertEquals(1, payments.count().intValue());
     assertNotEquals(null, payments.getData());
   }
@@ -141,11 +141,11 @@ public class InvoiceTest extends BaseTest {
 
   @Test
   public void testRetrieveLineItemsOfInvoice() throws PayabbhiException {
-    PayabbhiCollection<InvoiceItem> lineitems = Invoice.lineItems("invc_123456700test002");
-    assertEquals(3, lineitems.count().intValue());
+    PayabbhiCollection<InvoiceItem> lineitems = Invoice.lineItems("item_FL3nHHB7i7Fpcj1J");
+    assertEquals(1, lineitems.count().intValue());
     assertNotEquals(null, lineitems.getData());
     List<InvoiceItem> invoiceItemList = lineitems.getData();
-    assertEquals(3, invoiceItemList.size());
+    assertEquals(1, invoiceItemList.size());
   }
 
   @Test(expected = PayabbhiException.class)

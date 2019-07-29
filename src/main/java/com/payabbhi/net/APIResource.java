@@ -22,7 +22,8 @@ public class APIResource extends PayabbhiObject {
     GET,
     POST,
     PUT,
-    DELETE
+    DELETE,
+    PATCH
   }
 
   protected static String urlFor(Class<?> clazz) {

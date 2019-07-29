@@ -2,6 +2,8 @@ package com.payabbhi.model;
 
 import com.payabbhi.exception.PayabbhiException;
 import com.payabbhi.net.APIResource;
+import com.payabbhi.net.APIResource.Method;
+
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -100,7 +102,7 @@ public class Payment extends APIResource {
   /**
    * Returns a list of Transfers for a given payment that have been previously created.
    *
-   * @param id the identifier of the payment whose rransfers are to be retrieved
+   * @param id the identifier of the payment whose transfers are to be retrieved
    * @return a collection of Transfer objects
    * @throws PayabbhiException if there is a problem in performing the operation
    */
@@ -123,5 +125,19 @@ public class Payment extends APIResource {
         withParams(urlFor(Payment.class, id, Transfer.class), params),
         null,
         Transfer.class);
+  }
+  
+  /**
+   * Creates new transfers.
+   *
+   * @param sourceId is the paymentID from which amount is transferred to different recipients
+   * @param params a map consisting of parameters used for creating transfer objects
+   * @return collection of newly created transfer objects
+   * @throws PayabbhiException if there is a problem in performing the operation.
+   */
+  public static PayabbhiCollection<Transfer> transfer(String sourceId, Map<String, Object> params)
+      throws PayabbhiException {
+    return requestCollection(
+        Method.POST, urlFor(Payment.class, sourceId, Transfer.class), params, Transfer.class);
   }
 }

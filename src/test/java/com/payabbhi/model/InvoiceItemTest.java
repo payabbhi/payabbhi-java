@@ -79,9 +79,9 @@ public class InvoiceItemTest extends BaseTest {
                 put("customer_id", "cust_2WmsQoSRZMWWkcZg");
               }
             });
-    assertEquals("item_zvenYE0Tk8qTUaER", invoiceitem.get("id"));
+    assertEquals("item_OQ4jsxy3aMwYE9T7", invoiceitem.get("id"));
     assertEquals("Line Item", invoiceitem.get("name"));
-    assertEquals((Integer) 100, invoiceitem.get("amount"));
+    assertEquals((Integer) 200, invoiceitem.get("amount"));
     assertEquals("INR", invoiceitem.get("currency"));
     assertEquals("cust_2WmsQoSRZMWWkcZg", invoiceitem.get("customer_id"));
   }
@@ -100,9 +100,9 @@ public class InvoiceItemTest extends BaseTest {
   @Test
   public void testDeleteInvoiceItem() throws PayabbhiException {
     InvoiceItem invoiceitem = InvoiceItem.delete("item_zvenYE0Tk8qTUaER");
-    assertEquals("item_zvenYE0Tk8qTUaER", invoiceitem.get("id"));
-    assertEquals("Line Item", invoiceitem.get("name"));
-    assertEquals((Integer) 100, invoiceitem.get("amount"));
+    assertEquals("item_2MAlPM205eXk65Fx", invoiceitem.get("id"));
+    assertEquals("N3", invoiceitem.get("name"));
+    assertEquals((Integer) 200, invoiceitem.get("amount"));
     assertEquals("INR", invoiceitem.get("currency"));
     assertEquals("cust_2WmsQoSRZMWWkcZg", invoiceitem.get("customer_id"));
   }

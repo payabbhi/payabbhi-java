@@ -2,6 +2,8 @@ package com.payabbhi.model;
 
 import com.payabbhi.exception.PayabbhiException;
 import com.payabbhi.net.APIResource;
+import com.payabbhi.net.APIResource.Method;
+
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -47,14 +49,11 @@ public class Transfer extends APIResource {
   /**
    * Creates new transfers.
    *
-   * @param sourceId is the paymentID from which amount is transferred to different recipients
-   * @param params a map consisting of parameters used for creating an transfer object:
-   * @return the newly created transfer object
+   * @param params a map consisting of parameters used for creating transfers object:
+   * @return collection of newly created transfer objects
    * @throws PayabbhiException if there is a problem in performing the operation.
    */
-  public static Transfer create(String sourceId, Map<String, Object> params)
-      throws PayabbhiException {
-    return request(
-        Method.POST, urlFor(Payment.class, sourceId, Transfer.class), params, Transfer.class);
+  public static PayabbhiCollection<Transfer> create(Map<String, Object> params) throws PayabbhiException {
+    return requestCollection(Method.POST, urlFor(Transfer.class), params, Transfer.class);
   }
 }

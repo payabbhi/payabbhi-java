@@ -115,13 +115,13 @@ public class SubscriptionTest extends BaseTest {
   public void testCancelSubscriptionWithOption() throws PayabbhiException {
     Subscription subscription =
         Subscription.cancel(
-            "sub_luQ4QIXzaEIN0g5D",
+            "sub_xLH108FJwUlX47SI",
             new HashMap<String, Object>() {
               {
                 put("at_billing_cycle_end", true);
               }
             });
-    assertEquals("sub_luQ4QIXzaEIN0g5D", subscription.get("id"));
+    assertEquals("sub_xLH108FJwUlX47SI", subscription.get("id"));
     assertEquals(true, subscription.get("cancel_at_period_end"));
     assertEquals("active", subscription.get("status"));
   }
