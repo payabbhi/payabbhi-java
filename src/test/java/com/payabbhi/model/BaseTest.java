@@ -743,19 +743,88 @@ public class BaseTest {
             Method.POST, "https://payabbhi.com/api/v1/payment_links/invc_invalid/cancel", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
     
-    // Retrieve all payment of an invoice with invalid payment_link ID
+    // Retrieve all payment of a payment_link with invalid payment_link ID
     when(mf.fetch(
             Method.GET, "https://payabbhi.com/api/v1/payment_links/invc_invalid/payments", EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
 
-    // Retrieve all payment of an invoice
+    // Retrieve all payments of a payment_link
     when(mf.fetch(
             Method.GET,
             "https://payabbhi.com/api/v1/payment_links/invc_NRFJkTGyZYo03cPD/payments",
             EMPTY_BODY))
         .thenReturn(respondWith("/api/v1/payment_links/payments.json", 200));
 
+    // Get all beneficiaryaccounts
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/beneficiaryaccounts", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/beneficiaryaccounts/all.json", 200));
+    
+    // Get all beneficiaryaccounts with count = 2
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/beneficiaryaccounts?count=2", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/beneficiaryaccounts/filteredall.json", 200));
 
+    // Get all beneficiaryaccounts will throw error because of invalid params
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/beneficiaryaccounts?count=", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Retrieve a beneficiaryaccount
+    when(mf.fetch(
+            Method.GET, "https://payabbhi.com/api/v1/beneficiaryaccounts/bene_d7d8b37d264c4264", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/beneficiaryaccounts/bene_d7d8b37d264c4264.json", 200));
+    
+    // Retrieve a beneficiaryaccount with invalid ID
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/beneficiaryaccounts/bene_invalid", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Create a payment_link with less params
+    when(mf.fetch(
+    		Method.POST,
+    		"https://payabbhi.com/api/v1/beneficiaryaccounts",
+    		"{\"business_name\":\"Paypermint Pvt Ltd\"}"))
+    	.thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Get all virtual_accounts
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/virtual_accounts", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/virtual_accounts/all.json", 200));
+    
+    // Get all virtual_accounts with count = 2
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/virtual_accounts?count=1", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/virtual_accounts/filteredall.json", 200));
+
+    // Get all virtual_accounts will throw error because of invalid params
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/virtual_accounts?count=", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Retrieve a virtual_account
+    when(mf.fetch(
+            Method.GET, "https://payabbhi.com/api/v1/virtual_accounts/va_FMkEnEGEmHhMKZzL", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/virtual_accounts/va_FMkEnEGEmHhMKZzL.json", 200));
+    
+    // Retrieve a virtual_account with invalid ID
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/virtual_accounts/va_invalid", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+    // Close a virtual_account
+    when(mf.fetch(
+            Method.PATCH,
+            "https://payabbhi.com/api/v1/virtual_accounts/va_FMkEnEGEmHhMKZzL",
+            EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/virtual_accounts/close.json", 200));
+    
+    // Retrieve all payment of a virtual_account
+    when(mf.fetch(
+            Method.GET,
+            "https://payabbhi.com/api/v1/virtual_accounts/va_PakYenlyIIPjGwoU/payments",
+            EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/virtual_accounts/payments.json", 200));
+    
+    // List payments for virtual_account with invalid ID
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/virtual_accounts/va_invalid/payments", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/exceptions/invalidrequesterror.json", 400));
+    
+	// List virtual_account details for a payment invalid ID
+    when(mf.fetch(Method.GET, "https://payabbhi.com/api/v1/payments/pay_4I4NDogajGtV9bVo/virtual_account", EMPTY_BODY))
+        .thenReturn(respondWith("/api/v1/virtual_accounts/virtualaccountdetails.json", 200));
     
     APIResource.setFetcher(mf);
   }
