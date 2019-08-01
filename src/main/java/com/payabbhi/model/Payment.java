@@ -140,4 +140,20 @@ public class Payment extends APIResource {
     return requestCollection(
         Method.POST, urlFor(Payment.class, sourceId, Transfer.class), params, Transfer.class);
   }
+  
+  /**
+   * Returns virtual account details for given payment id
+   *
+   * @param id the identifier of the payment whose virtual account details are to be retrieved
+   * @return a payment object
+   * @throws PayabbhiException if there is a problem in performing the operation
+   */
+  public static Payment virtual_account(String id)
+      throws PayabbhiException {
+    return request(
+        Method.GET,
+        urlFor(Payment.class, id, "virtual_account"),
+        null,
+        Payment.class);
+  }
 }
