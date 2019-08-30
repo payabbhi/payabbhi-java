@@ -2,9 +2,9 @@
 
 Changelog for payabbhi-java.
 
-## [1.0.2] - 2019-01-04
+## [1.0.2] - 2019-08-30
 ### Added
-- Support for Billing, Event and Outflow
+- Support for Billing, Event, Outflow, PaymentLink, Virtual Account and Settlement
 
 ## [1.0.1] - 2018-11-14
 ### Added
